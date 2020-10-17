@@ -12,14 +12,17 @@ enum Body: Int, CaseIterable {
 }
 
 class Car{
+    private var year: Int?
+    private var manufacturer: String
+    private var model: String
+    private var body: Body
+    private var carNumber: String?
     
-    private var year : Int
-    private var manufacturer : String
-    private var model : String
-    private var body : Body
-    private var carNumber : String
-    
-    init(year: Int, manufacturer: String, model: String, body: Int, carNumber: String) {
+    init(year: Int,
+         manufacturer: String,
+         model: String,
+         body: Int,
+         carNumber: String) {
         self.year = year
         self.manufacturer = manufacturer
         self.model = model
@@ -27,33 +30,41 @@ class Car{
         self.carNumber = carNumber
     }
     
+    //Set func
     func setYear(newYear: Int) {
         year = newYear
     }
+    
     func setManufacturer(newManufacturer: String) {
         manufacturer = newManufacturer
     }
+    
     func setModel(newModel: String) {
         model = newModel
     }
+    
     func setBody(newBody: Int) {
         body = Body(rawValue: newBody) ?? Body.DIYcar
     }
+    
     func setCarNumber(newNumber: String)  {
         carNumber = newNumber
     }
     
+    //Get fuc
     func getYear() -> Int {
-        return year
+        return year ?? -1
     }
+    
     func getManufacturer() -> String {
         return manufacturer
     }
+    
     func getModel() -> String {
         return model
     }
+    
     func getBody() -> Body {
         return body
     }
-   
 }

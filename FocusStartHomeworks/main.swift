@@ -9,54 +9,69 @@ import Foundation
 
 var Cars = [Car]()
 
-var userDefaults = UserDefaults.standard
-
-
-func newCar(year : Int, manufacturer: String, model: String, body: Int, carNumber: String)  {
-    let nCar = Car.init(year: year, manufacturer: manufacturer, model: model, body: body, carNumber: carNumber)
+func newCar(year: Int,
+            manufacturer: String,
+            model: String,
+            body: Int,
+            carNumber: String) {
+    let nCar = Car.init(year: year,
+                        manufacturer: manufacturer,
+                        model: model,
+                        body: body,
+                        carNumber: carNumber)
     Cars.append(nCar)
-    
 }
-func deleteCar(id:Int)  {
+
+func deleteCar(id: Int)  {
     Cars.remove(at: id)
 }
-func updateCar(id:Int, year : Int, manufacturer: String, model: String, body: Int) {
+
+func updateCar(id: Int,
+               year: Int,
+               manufacturer: String,
+               model: String,
+               body: Int) {
     Cars[id].setYear(newYear: year)
     Cars[id].setManufacturer(newManufacturer: manufacturer)
     Cars[id].setModel(newModel: model)
     Cars[id].setBody(newBody: body)
 }
-func showCar(id:Int){
+
+func showCar(id: Int){
     let year = Cars[id].getYear()
     let manufacturer = Cars[id].getManufacturer()
     let model = Cars[id].getModel()
     let Body = Cars[id].getBody()
     
-    print("Year         : ", year == -1 ? "-" : year,"\nManufacturer : ",manufacturer,"\nModel        : ",model,"\nBody type    : ",Body,"\n")
+    print("Year         : ", year == -1 ? "-" : year,
+          "\nManufacturer : ", manufacturer,
+          "\nModel        : ", model,
+          "\nBody type    : ", Body, "\n")
 }
-func filterIsTrue(id:Int,filterId:Int) -> Bool {
+
+func filterIsTrue(id: Int, filterId: Int) -> Bool {
     return Cars[id].getBody() == Body(rawValue: filterId) ? true : false
 }
 
-
-
 func main()  {
-    
     let count = Cars.count
-    print("\n Available for viewing cars: ",count,"\n")
-    var int : Int = 0
-    var int1 : Int = 0
+    let countCars: Int = Int(Cars.count)-1
+    
+    var int: Int = 0
+    var int1: Int = 0
     var newYear: Int = 0
-    var newManufacturer : String = ""
-    var newModel : String = ""
+    var newManufacturer: String = ""
+    var newModel: String = ""
     var newBody: Int = 0
-    var newNumber : String = ""
-    let countCars : Int = Int(Cars.count)-1
+    var newNumber: String = ""
+    
+    print("\n Available for viewing cars: ",count,"\n")
     print("Write number to choose action:\n1) show one car\n2) delete\n3) update\n4) new\n5) show all cars\n6) show cars with filters \n7) exit")
     
     if let str = readLine(){
         int = Int(str)!
     }
+    
     switch  int {
     case 1:
         print("which one? from 0 to ", countCars)
@@ -65,6 +80,7 @@ func main()  {
         }
         showCar(id: int1)
         main()
+        
     case 2:
         print("which one? from 0 to ", countCars)
         if let str = readLine(){
@@ -72,6 +88,7 @@ func main()  {
         }
         deleteCar(id: int1)
         main()
+        
     case 3:
         print("which one? from 0 to ", countCars)
         if let str = readLine(){
@@ -93,11 +110,14 @@ func main()  {
         if let str = readLine(){
             newBody = Int(str)!
         }
-        
-        updateCar(id: int1, year: newYear, manufacturer: newManufacturer, model: newModel, body: newBody)
+        updateCar(id: int1,
+                  year: newYear,
+                  manufacturer: newManufacturer,
+                  model: newModel,
+                  body: newBody)
         main()
-    case 4:
         
+    case 4:
         print("Year? ")
         if let str = readLine(){
             newYear = str == "" ? -1 : Int(str)!
@@ -132,14 +152,20 @@ func main()  {
         print("Country car number? ")
         newNumber = readLine()!
         
-        newCar(year: newYear, manufacturer: newManufacturer, model: newModel, body: newBody, carNumber: newNumber)
+        newCar(year: newYear,
+               manufacturer: newManufacturer,
+               model: newModel,
+               body: newBody,
+               carNumber: newNumber)
         main()
+        
     case 5:
         for i in 0...countCars {
             print("Car number \(i):")
             showCar(id: i)
         }
         main()
+        
     case 6:
         print("Body type? Please write number")
         for body in Body.allCases {
@@ -156,9 +182,7 @@ func main()  {
         }
         main()
         
-        
     default: break
-        
     }
 }
 
