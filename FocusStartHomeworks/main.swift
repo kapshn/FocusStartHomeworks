@@ -19,14 +19,12 @@ func newCar(year : Int, manufacturer: String, model: String, body: Int, carNumbe
 }
 func deleteCar(id:Int)  {
     Cars.remove(at: id)
-    main()
 }
 func updateCar(id:Int, year : Int, manufacturer: String, model: String, body: Int) {
     Cars[id].setYear(newYear: year)
     Cars[id].setManufacturer(newManufacturer: manufacturer)
     Cars[id].setModel(newModel: model)
     Cars[id].setBody(newBody: body)
-    main()
 }
 func showCar(id:Int){
     let year = Cars[id].getYear()
@@ -35,7 +33,9 @@ func showCar(id:Int){
     let Body = Cars[id].getBody()
     
     print("Year         : ", year == -1 ? "-" : year,"\nManufacturer : ",manufacturer,"\nModel        : ",model,"\nBody type    : ",Body,"\n")
-    main()
+}
+func filterIsTrue(id:Int,filterId:Int) -> Bool {
+    return Cars[id].getBody() == Body(rawValue: filterId) ? true : false
 }
 
 
@@ -52,7 +52,7 @@ func main()  {
     var newBody: Int = 0
     var newNumber : String = ""
     let countCars : Int = Int(Cars.count)-1
-    print("Write number to choose action:\n1) show\n2) delete\n3) update\n4) new\n5) exit")
+    print("Write number to choose action:\n1) show one car\n2) delete\n3) update\n4) new\n5) show all cars\n6) show cars with filters \n7) exit")
     
     if let str = readLine(){
         int = Int(str)!
@@ -64,12 +64,14 @@ func main()  {
             int1 = Int(str)!
         }
         showCar(id: int1)
+        main()
     case 2:
         print("which one? from 0 to ", countCars)
         if let str = readLine(){
             int1 = Int(str)!
         }
         deleteCar(id: int1)
+        main()
     case 3:
         print("which one? from 0 to ", countCars)
         if let str = readLine(){
@@ -93,6 +95,7 @@ func main()  {
         }
         
         updateCar(id: int1, year: newYear, manufacturer: newManufacturer, model: newModel, body: newBody)
+        main()
     case 4:
         
         print("Year? ")
@@ -131,6 +134,28 @@ func main()  {
         
         newCar(year: newYear, manufacturer: newManufacturer, model: newModel, body: newBody, carNumber: newNumber)
         main()
+    case 5:
+        for i in 0...countCars {
+            print("Car number \(i):")
+            showCar(id: i)
+        }
+        main()
+    case 6:
+        print("Body type? Please write number")
+        for body in Body.allCases {
+            print(body.rawValue, " ", body)
+        }
+        if let str = readLine(){
+            int1 = Int(str)!
+        }
+        for i in 0...countCars {
+            if filterIsTrue(id: i, filterId: int1) {
+                print("Car number \(i):")
+                showCar(id: i)
+            }
+        }
+        main()
+        
         
     default: break
         
@@ -138,6 +163,8 @@ func main()  {
 }
 
 newCar(year: -1, manufacturer: "Sith Empire", model: "Destroyer", body: 0, carNumber: "")
+newCar(year: -1, manufacturer: "Roaling", model: "branch", body: 0, carNumber: "")
+newCar(year: -1, manufacturer: "You", model: "Circle", body: 0, carNumber: "")
 newCar(year: 2000, manufacturer: "Lincoln", model: "Town Car", body: 2, carNumber: "OL9139F")
 newCar(year: 2016, manufacturer: "Mercedes-Benz", model: "S-Класс AMG Long III", body: 1, carNumber: "ABVGD")
 newCar(year: 2013, manufacturer: "Kia", model: "Cerato Koup", body: 3, carNumber: "who knows?")
