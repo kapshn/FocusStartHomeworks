@@ -8,7 +8,7 @@
 import Foundation
 
 enum Body: Int, CaseIterable {
-    case Sedan = 1, Limousine = 2, Coupe = 3, Hatchback = 4, Van = 5, DIYcar = 0
+    case  DIYcar, Sedan, Limousine, Coupe, Hatchback, Van
 }
 
 class Car{
@@ -18,11 +18,11 @@ class Car{
     private var body: Body
     private var carNumber: String?
     
-    init(year: Int,
+    init(year: Int?,
          manufacturer: String,
          model: String,
          body: Int,
-         carNumber: String) {
+         carNumber: String?) {
         self.year = year
         self.manufacturer = manufacturer
         self.model = model
@@ -31,7 +31,7 @@ class Car{
     }
     
     //Set func
-    func setYear(newYear: Int) {
+    func setYear(newYear: Int?) {
         year = newYear
     }
     
@@ -47,24 +47,24 @@ class Car{
         body = Body(rawValue: newBody) ?? Body.DIYcar
     }
     
-    func setCarNumber(newNumber: String)  {
+    func setCarNumber(newNumber: String?)  {
         carNumber = newNumber
     }
     
-    //Get fuc
+    //Get func
     func getYear() -> Int {
-        return year ?? -1
+		year ?? -1
     }
     
     func getManufacturer() -> String {
-        return manufacturer
+		manufacturer
     }
     
     func getModel() -> String {
-        return model
+		model
     }
     
     func getBody() -> Body {
-        return body
+		body
     }
 }
