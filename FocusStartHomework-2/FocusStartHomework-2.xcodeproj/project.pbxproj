@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A757F39D2543EF020089838F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A757F39C2543EF020089838F /* main.swift */; };
+		A757F3A62543F4660089838F /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A757F3A52543F4660089838F /* ThreadSafeArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		A757F3992543EF020089838F /* FocusStartHomework-2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FocusStartHomework-2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A757F39C2543EF020089838F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A757F3A52543F4660089838F /* ThreadSafeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				A757F39C2543EF020089838F /* main.swift */,
+				A757F3A52543F4660089838F /* ThreadSafeArray.swift */,
 			);
 			path = "FocusStartHomework-2";
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A757F3A62543F4660089838F /* ThreadSafeArray.swift in Sources */,
 				A757F39D2543EF020089838F /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
