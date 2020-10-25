@@ -43,7 +43,7 @@ func showCar(id: Int){
     let model = Cars[id].getModel()
     let Body = Cars[id].getBody()
     
-    print("Year         : ", year == -1 ? "-" : year,
+	print("Year         : ", (year == nil) ? "-" : year!,
           "\nManufacturer : ", manufacturer,
           "\nModel        : ", model,
           "\nBody type    : ", Body, "\n")
@@ -112,7 +112,7 @@ func main()  {
 				print("Incorrect value! Please enter number from 0 to ", countCars)
 			}
 		}
-        print("Year? Previos data:", Cars[carID!].getYear())
+		print("Year? Previos data:", (Cars[carID!].getYear()==nil) ? "-" : Cars[carID!].getYear()!)
         if let str = readLine(){
             newYear = Int(str)!
         }

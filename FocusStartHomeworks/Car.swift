@@ -11,7 +11,7 @@ enum Body: Int, CaseIterable {
     case  DIYcar, Sedan, Limousine, Coupe, Hatchback, Van
 }
 
-class Car{
+struct Car{
     private var year: Int?
     private var manufacturer: String
     private var model: String
@@ -31,29 +31,29 @@ class Car{
     }
     
     //Set func
-    func setYear(newYear: Int?) {
+	mutating func setYear(newYear: Int?) {
         year = newYear
     }
     
-    func setManufacturer(newManufacturer: String) {
+	mutating func setManufacturer(newManufacturer: String) {
         manufacturer = newManufacturer
     }
     
-    func setModel(newModel: String) {
+	mutating func setModel(newModel: String) {
         model = newModel
     }
     
-    func setBody(newBody: Int) {
+	mutating func setBody(newBody: Int) {
         body = Body(rawValue: newBody) ?? Body.DIYcar
     }
     
-    func setCarNumber(newNumber: String?)  {
+	mutating func setCarNumber(newNumber: String?)  {
         carNumber = newNumber
     }
     
     //Get func
-    func getYear() -> Int {
-		year ?? -1
+    func getYear() -> Int? {
+		year
     }
     
     func getManufacturer() -> String {
